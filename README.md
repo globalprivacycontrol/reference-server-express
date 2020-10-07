@@ -21,7 +21,7 @@ Apart from any logos or marks that may be contained in this repo, this work is l
 [![CC BY 4.0][cc-by-image]][cc-by]
 
 ## Resources
-- Visit [initiative site](https://globalprivacycontrol.org) to learn more about the proposed standard
+- Visit [landing page](https://globalprivacycontrol.org) to learn more about the proposed standard
 - Read [proposed specification](https://globalprivacycontrol.github.io/gpc-spec) for technical details
 
 [cc-by]: http://creativecommons.org/licenses/by/4.0/
