@@ -1,0 +1,28 @@
+{
+  "name": "reference-server-express",
+  "version": "1.0.0",
+  "description": "Reference implementation of the proposed Global Privacy Control standard with sample code and instructions",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "ejs": "^2.6.1"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/globalprivacycontrol/reference-server-express.git"
+  },
+  "license": "CC BY 4.0",
+  "bugs": {
+    "url": "https://github.com/globalprivacycontrol/reference-server-express/issues"
+  },
+  "homepage": "https://github.com/globalprivacycontrol/reference-server-express#readme",
+  "keywords": [
+    "gpc",
+    "global",
+    "privacy",
+    "control"
+  ]
+}

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Interacting with Global Privacy Control</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="all">
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <meta name="HandheldFriendly" content="true" />
+    <!-- FAVICONS -->
+    <link
+      rel="icon"
+      href="https://cdn.glitch.com/da695384-aad1-41c0-b2ea-7cd9c545f0a0%2Ffavicon.ico?v=1602035188395"
+      type="image/x-icon"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="https://cdn.glitch.com/da695384-aad1-41c0-b2ea-7cd9c545f0a0%2Fapple-touch-icon.png?v=1602035207588"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://cdn.glitch.com/da695384-aad1-41c0-b2ea-7cd9c545f0a0%2Ffavicon-32x32.png?v=1602035212322"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://cdn.glitch.com/da695384-aad1-41c0-b2ea-7cd9c545f0a0%2Ffavicon-16x16.png?v=1602035216926"
+    />
+    
+    <!-- PRIMARY META TAGS -->
+    <title>Global Privacy Control — Interacting With The GPC Signal</title>
+    <meta
+      name="title"
+      content="Global Privacy Control — Interacting With The GPC Signal"
+    />
+    <meta
+      name="description"
+      content="Learn how to detect the “Global Privacy Control” (GPC) signal, a proposed specification backed by over a dozen organizations."
+    />
+    <link rel="canonical" href="https://global-privacy-control.glitch.me/" />
+
+    <!-- OPEN GRAPH / FACEBOOK -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://global-privacy-control.glitch.me/" />
+    <meta
+      property="og:title"
+      content="Global Privacy Control — Interacting With The GPC Signal"
+    />
+    <meta
+      property="og:description"
+      content="Learn how to detect the “Global Privacy Control” (GPC) signal, a proposed specification backed by over a dozen organizations."
+    />
+    <meta property="og:image" content="https://cdn.glitch.com/da695384-aad1-41c0-b2ea-7cd9c545f0a0%2Fgpc-social-big.jpg?v=1602035203528" />
+
+    <!-- TWITTER -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://global-privacy-control.glitch.me/" />
+    <meta
+      name="twitter:title"
+      content="Global Privacy Control — Interacting With The GPC Signal"
+    />
+    <meta
+      name="twitter:description"
+      content="Learn how to detect the “Global Privacy Control” (GPC) signal, a proposed specification backed by over a dozen organizations."
+    />
+    <meta name="twitter:image" content="https://cdn.glitch.com/da695384-aad1-41c0-b2ea-7cd9c545f0a0%2Fgpc-social-big.jpg?v=1602035203528" />
+    <meta name="twitter:site" content="@globalprivcntrl" />
+    <meta name="twitter:creator" content="@globalprivcntrl" />
+    
+    <link rel="stylesheet" href="/prism-vsc-dark-plus.css" />
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/prism.js"></script>
+    <script src="/client.js"></script>
+  </head>
+  <body>
+    <section class="intro">
+      <div class="section-area">
+        <h1>
+          Interacting with Global Privacy Control
+        </h1>
+      </div>
+    </section>
+    <section class="header-signal">
+      <div class="section-area">
+        <div class="section-copy">
+          <div class="section-title">
+            <h1>
+              Server-side detection
+            </h1>
+            <p>
+              A user agent's Global Privacy Control setting is attached to HTTP requests as the
+              <code>Sec-GPC</code> request header. This header's value will be <code>"1"</code>
+              if enabled, and not present otherwise. Interacting with this will vary depending on
+              on the application back-end. Example code is Node.js/Express.
+              
+            </p>
+            <%- include('partials/header-signal-status') %>
+          </div>
+        </div>
+        <div class="section-example">
+          <pre class="language-javascript line-numbers" data-language="JavaScript">
+            <code>
+app.get("/", function(req, res) {
+  const gpcValue = req.header('Sec-GPC')
+  if (gpcValue === "1") {
+    // signal detected, do something
+  }
+})
+            </code>
+          </pre>
+        </div>
+      </div>
+    </section>
+    <section class="dom-signal">
+      <div class="section-area">
+        <div class="section-copy">
+          <div class="section-title">
+            <h1>
+              Client-side detection
+            </h1>
+            <p>
+              The <code>navigator.globalPrivacyControl</code> property enables client-side script to determine
+              a user agent's Global Privacy Control setting. This value mirrors the value sent in the 
+              <code>Sec-GPC</code> header: it will equal <code>true</code> if the <code>Sec-GPC</code> header sent
+              is equal to <code>"1"</code>, and <code>false</code> otherwise.
+            </p>
+            <%- include('partials/dom-signal-status') %>
+          </div>
+        </div>
+        <div class="section-example">
+          <pre class="language-javascript line-numbers" data-language="JavaScript">
+            <code>
+const gpcValue = navigator.globalPrivacyControl
+if (gpcValue) {
+  // signal detected, do something
+}
+            </code>
+          </pre>
+        </div>
+      </div>
+    </section>
+    <section class="well-known">
+      <div class="section-area">
+        <div class="section-copy">
+          <div class="section-title">
+            <h1>
+              .well-known
+            </h1>
+            <p>
+              Businesses may host a <code>.well-known/gpc</code> resource that indicates to clients how
+              they respond to a Global Privacy Control signal. This is a JSON file hosted at the 
+              <code>.well-known/gpc</code> endpoint.
+            </p>
+            <%- include('partials/well-known-status') %>
+          </div>
+        </div>
+        <div class="section-example">
+          <pre class="language-json" data-language="JSON">
+            <code id="well-known-code"></code>
+          </pre>
+        </div>
+      </div>
+    </section>
+    <section class="footer">
+      <div class="section-area">
+        <%- include('partials/footer.ejs') %>
+      </div>
+    </section>
+  </body>
+</html>
