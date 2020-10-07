@@ -12,7 +12,7 @@ This project adheres to the Contributor Covenant [code of conduct](CODE_OF_CONDU
 By participating, you are expected to uphold this code. Please report unacceptable behavior to info@globalprivacycontrol.org.
 
 ## Getting Involved
-We appreciate offers to help but are not currently accepting pull requests for non-essential or design-related updates.
+Please email info@globalprivacycontrol.org if you want more information or are interested in contributing -- particularly if you're interested in developing other reference implementations in languages we don't yet feature including Python, Ruby, etc.  
 
 ## License
 Apart from any logos or marks that may be contained in this repo, this work is licensed under a
