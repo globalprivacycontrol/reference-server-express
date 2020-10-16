@@ -11,10 +11,6 @@ app.get("/", function(req, res) {
   });
 });
 
-app.get("/.well-known/gpc", function(req, res) {
-  res.sendFile(__dirname + "/public/.well-known/gpc.json");
-});
-
 const listener = app.listen(process.env.PORT, function() {
   console.log("Your app is listening on port " + listener.address().port);
 });
