@@ -13,7 +13,7 @@ document.addEventListener('readystatechange', (event) => {
     }
 })
 
-fetch("/.well-known/GPC")
+fetch("/.well-known/gpc.json")
   .then(response => response.json())
   .then(json => {
     const wellKnownWrapper = document.getElementById('well-known-code')
