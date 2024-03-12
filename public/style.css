@@ -40,6 +40,10 @@ section {
   align-items: center;
 }
 
+.hidden {
+  display: none;
+}
+
 .section-area {
   display: flex;
   flex-direction: row;
