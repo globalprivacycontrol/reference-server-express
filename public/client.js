@@ -1,4 +1,8 @@
 document.addEventListener('readystatechange', (event) => {
+    if (document.readyState === 'interactive') {
+        const gpcStatus = document.getElementById('dom-signal-status')
+        gpcStatus.classList.remove('hidden')
+    }
     if (document.readyState === 'interactive' && typeof(navigator.globalPrivacyControl) !== 'undefined') {
         const gpcStatus = document.getElementById('dom-signal-status')
         const gpcValue = document.getElementById('gpc-dom-value')
